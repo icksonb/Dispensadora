@@ -1,0 +1,179 @@
+******************************************************************************
+                  TI ARM Linker Unix v18.1.2                   
+******************************************************************************
+>> Linked Tue Aug  7 02:17:08 2018
+
+OUTPUT FILE NAME:   <Dispensadora.out>
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000749
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00100000  00000a62  000ff59e  R  X
+  SRAM                  20000000   00040000  00000200  0003fe00  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000a64   00000a64    r-x
+  00000000    00000000    00000200   00000200    r-- .intvecs
+  00000200    00000200    0000060e   0000060e    r-x .text
+  00000810    00000810    00000254   00000254    r-- .const
+20000000    20000000    00000200   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    00000200     
+                  00000000    00000200     startup_ccs.obj (.intvecs)
+
+.text      0    00000200    0000060e     
+                  00000200    00000200     driverlib.lib : sysctl.obj (.text:SysCtlClockFreqSet)
+                  00000400    00000132                   : gpio.obj (.text:GPIOPadConfigSet)
+                  00000532    00000002     startup_ccs.obj (.text:FaultISR)
+                  00000534    000000c0     Dispensadora.obj (.text:main)
+                  000005f4    00000068     driverlib.lib : flash.obj (.text:FlashProgram)
+                  0000065c    00000048                   : sysctl.obj (.text:_SysCtlFrequencyGet)
+                  000006a4    00000038                   : sysctl.obj (.text:SysCtlPeripheralReady)
+                  000006dc    00000036     Dispensadora.obj (.text:Flash_wb)
+                  00000712    00000002     startup_ccs.obj (.text:IntDefaultHandler)
+                  00000714    00000034     driverlib.lib : sysctl.obj (.text:SysCtlPeripheralEnable)
+                  00000748    00000030     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  00000778    0000002a     driverlib.lib : gpio.obj (.text:GPIODirModeSet)
+                  000007a2    00000002     startup_ccs.obj (.text:NmiSR)
+                  000007a4    00000020     driverlib.lib : sysctl.obj (.text:_SysCtlMemTimingGet)
+                  000007c4    00000018                   : gpio.obj (.text:GPIOPinTypeGPIOOutput)
+                  000007dc    00000012                   : gpio.obj (.text:GPIOPinTypeGPIOInput)
+                  000007ee    00000006                   : gpio.obj (.text:GPIOPinRead)
+                  000007f4    00000006                   : gpio.obj (.text:GPIOPinWrite)
+                  000007fa    00000006     startup_ccs.obj (.text:ResetISR)
+                  00000800    00000006     driverlib.lib : sysctl.obj (.text:SysCtlDelay)
+                  00000806    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  0000080a    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.const     0    00000810    00000254     
+                  00000810    000001b0     driverlib.lib : sysctl.obj (.const:g_pppui32XTALtoVCO)
+                  000009c0    0000006c                   : sysctl.obj (.const:g_pui32Xtals)
+                  00000a2c    00000030                   : sysctl.obj (.const:g_sXTALtoMEMTIM)
+                  00000a5c    00000008                   : sysctl.obj (.const)
+
+.cinit     0    00000000    00000000     UNINITIALIZED
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+MODULE SUMMARY
+
+       Module                code   ro data   rw data
+       ------                ----   -------   -------
+    ./
+       startup_ccs.obj       12     512       0      
+       Dispensadora.obj      246    0         0      
+    +--+---------------------+------+---------+---------+
+       Total:                258    512       0      
+                                                     
+    /home/ickson/Documentos/Projetos/CLPHUGO/SW-TM4C-2.1.4.178/driverlib/ccs/Debug/driverlib.lib
+       sysctl.obj            730    596       0      
+       gpio.obj              402    0         0      
+       flash.obj             104    0         0      
+    +--+---------------------+------+---------+---------+
+       Total:                1236   596       0      
+                                                     
+    /home/ickson/ticcs/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib/rtsv7M4_T_le_v4SPD16_eabi.lib
+       boot_cortex_m.c.obj   48     0         0      
+       exit.c.obj            4      0         0      
+       pre_init.c.obj        4      0         0      
+    +--+---------------------+------+---------+---------+
+       Total:                56     0         0      
+                                                     
+       Stack:                0      0         512    
+    +--+---------------------+------+---------+---------+
+       Grand Total:          1550   1108      512    
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                  
+-------   ----                  
+0000080b  C$$EXIT               
+000005f5  FlashProgram          
+000006dd  Flash_wb              
+00000779  GPIODirModeSet        
+00000401  GPIOPadConfigSet      
+000007ef  GPIOPinRead           
+000007dd  GPIOPinTypeGPIOInput  
+000007c5  GPIOPinTypeGPIOOutput 
+000007f5  GPIOPinWrite          
+000007fb  ResetISR              
+00000201  SysCtlClockFreqSet    
+00000801  SysCtlDelay           
+00000715  SysCtlPeripheralEnable
+000006a5  SysCtlPeripheralReady 
+20000200  __STACK_END           
+00000200  __STACK_SIZE          
+20000200  __STACK_TOP           
+ffffffff  __TI_pprof_out_hndl   
+ffffffff  __TI_prof_data_size   
+ffffffff  __TI_prof_data_start  
+00000000  __TI_static_base__    
+ffffffff  __binit__             
+ffffffff  __c_args__            
+UNDEFED   __mpu_init            
+20000000  __stack               
+00000749  _c_int00_noinit_noargs
+00000807  _system_pre_init      
+0000080b  abort                 
+ffffffff  binit                 
+00000000  g_pfnVectors          
+00000535  main                  
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                  
+-------   ----                  
+00000000  __TI_static_base__    
+00000000  g_pfnVectors          
+00000200  __STACK_SIZE          
+00000201  SysCtlClockFreqSet    
+00000401  GPIOPadConfigSet      
+00000535  main                  
+000005f5  FlashProgram          
+000006a5  SysCtlPeripheralReady 
+000006dd  Flash_wb              
+00000715  SysCtlPeripheralEnable
+00000749  _c_int00_noinit_noargs
+00000779  GPIODirModeSet        
+000007c5  GPIOPinTypeGPIOOutput 
+000007dd  GPIOPinTypeGPIOInput  
+000007ef  GPIOPinRead           
+000007f5  GPIOPinWrite          
+000007fb  ResetISR              
+00000801  SysCtlDelay           
+00000807  _system_pre_init      
+0000080b  C$$EXIT               
+0000080b  abort                 
+20000000  __stack               
+20000200  __STACK_END           
+20000200  __STACK_TOP           
+ffffffff  __TI_pprof_out_hndl   
+ffffffff  __TI_prof_data_size   
+ffffffff  __TI_prof_data_start  
+ffffffff  __binit__             
+ffffffff  __c_args__            
+ffffffff  binit                 
+UNDEFED   __mpu_init            
+
+[31 symbols]
